@@ -1,6 +1,13 @@
 <template>
     <div>
         <h1>Github API requester</h1>
+        <div>
+            <label for='name'>Type in a user name</label>
+        </div>
+        <div>
+            <input v-model="newUser" type="text" placeholder="Type in user name">
+            <button @click="fetchProjects">Submit</button>
+        </div>
         <ul>
             <!-- Loop through the api request -->
             <li v-for="project in projects" :key="project.id">
@@ -17,15 +24,15 @@ export default {
     data() {
         return {
             projects: [],
+            newUser: ''
         };
     },
     mounted() {
-        this.fetchProjects();
+        //this.fetchProjects();
     },
     methods: {
         fetchProjects() {
-            const userName = 'Arran-Logan-Riley';
-
+            const userName = this.newUser;
             axios
                 .get(`https://api.github.com/users/${userName}/repos`)
                 .then(response => {
