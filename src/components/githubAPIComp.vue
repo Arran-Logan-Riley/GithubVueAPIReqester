@@ -56,7 +56,6 @@ export default {
                     })
                     
                     this.projects = cronoUserSort
-                    console.log(cronoUserSort)
                     //If there is more than 30 repos, change it to 30+. Cannot request more than 30 repos.
                     if(cronoUserSort.length == 30){
                         this.totNumRepo = "30+"
